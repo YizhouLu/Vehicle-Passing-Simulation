@@ -41,7 +41,6 @@ plot(blx_poly,bly_poly,'k',brx_poly,bry_poly,'k')
 axis equal;grid on;hold on
 plot(x_poly,y_poly,'k--');
 
-state = '';
 
 %% Switch
 flag_change = 0;        % vehicle has not changed traj
@@ -144,7 +143,6 @@ for i = 1:length(T)
     [~,Y_temp_B] = ode45(@(t,x) vehicle(x,LeadCarB.input(:,i)),0:dt:dt,Y_act_B(:,i));
     Y_act_B(:,i+1) = Y_temp_B(end,:)';
     % calculating distance along the path between vehicles
-    finding_index(Y_act(2,i),Y_act(3,i),x_poly,y_poly)
     S = s(k);
     S_A = s(finding_index(Y_act_A(2,i),Y_act_A(3,i),x_poly,y_poly));
     S_B = s(finding_index(Y_act_B(2,i),Y_act_B(3,i),x_poly,y_poly));
